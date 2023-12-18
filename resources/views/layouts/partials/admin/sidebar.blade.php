@@ -28,7 +28,7 @@
             @foreach ($links as $link)
                 <li>
                     <a href="{{ $link['route'] }}"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 group {{ $link['active'] ? 'bg-gray-100' : '' }}">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 group {{ $link['active'] ? 'bg-gray-300' : '' }}">
                         <span class="inline-flex w-8 h-8 justify-center items-center">
                             <i class="{{ $link['icon'] }} text-gray-500"></i>
                         </span>
