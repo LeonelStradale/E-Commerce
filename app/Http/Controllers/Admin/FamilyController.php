@@ -91,7 +91,7 @@ class FamilyController extends Controller
             session()->flash('swal', [
                 'icon' => 'error',
                 'title' => '¡Ups!',
-                'text' => 'No se puede eliminar la familia porque tiene categorias asociadas.'
+                'text' => 'No se puede eliminar la familia porque tiene categorías asociadas.'
             ]);
 
             return redirect()->route('admin.families.edit', $family);

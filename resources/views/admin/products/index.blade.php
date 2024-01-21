@@ -4,17 +4,17 @@
         'route' => route('admin.dashboard'),
     ],
     [
-        'name' => 'Familias',
+        'name' => 'Productos',
     ],
 ]">
 
     <x-slot name="action">
-        <a href="{{ route('admin.families.create') }}" class="btn btn-blue">
+        <a href="{{ route('admin.products.create') }}" class="btn btn-blue">
             Nuevo
         </a>
     </x-slot>
 
-    @if ($families->count())
+    @if ($products->count())
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -23,7 +23,13 @@
                             ID
                         </th>
                         <td scope="col" class="px-6 py-3">
+                            SKU
+                        </td>
+                        <td scope="col" class="px-6 py-3">
                             Nombre
+                        </td>
+                        <td scope="col" class="px-6 py-3">
+                            Precio
                         </td>
                         <td scope="col" class="px-6 py-3">
 
@@ -31,17 +37,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($families as $family)
+                    @foreach ($products as $product)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $family->id }}
+                                {{ $product->id }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $family->name }}
+                                {{ $product->sku }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('admin.families.edit', $family) }}">
+                                {{ $product->name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $product->price }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="{{ route('admin.products.edit', $product) }}">
                                     Editar
                                 </a>
                             </td>
@@ -51,7 +63,7 @@
             </table>
         </div>
         <div class="mt-4">
-            {{ $families->links() }}
+            {{ $products->links() }}
         </div>
     @else
         <div class="flex items-center p-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
@@ -63,7 +75,7 @@
             </svg>
             <span class="sr-only">Info</span>
             <div>
-                <span class="font-medium">Info alert!</span> Todavía no hay familias de productos registradas.
+                <span class="font-medium">Info alert!</span> No hay productos registrados.
             </div>
         </div>
     @endif

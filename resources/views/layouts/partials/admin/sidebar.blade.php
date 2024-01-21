@@ -4,14 +4,42 @@
             'name' => 'Dashboard',
             'icon' => 'fa-solid fa-gauge',
             'route' => route('admin.dashboard'),
-            'active' => request()->routeIs('admin.dashboard')
+            'active' => request()->routeIs('admin.dashboard'),
+        ],
+        [
+            // Opciones
+            'name' => 'Opciones',
+            'icon' => 'fa-solid fa-cog',
+            'route' => route('admin.options.index'),
+            'active' => request()->routeIs('admin.options.*'),
         ],
         [
             // Familia de Productos
             'name' => 'Familias',
             'icon' => 'fa-solid fa-box-open',
             'route' => route('admin.families.index'),
-            'active' => request()->routeIs('admin.families.*')
+            'active' => request()->routeIs('admin.families.*'),
+        ],
+        [
+            // Categorías
+            'name' => 'Categorías',
+            'icon' => 'fa-solid fa-tags',
+            'route' => route('admin.categories.index'),
+            'active' => request()->routeIs('admin.categories.*'),
+        ],
+        [
+            // Subcategorías
+            'name' => 'Subcategorías',
+            'icon' => 'fa-solid fa-tag',
+            'route' => route('admin.subcategories.index'),
+            'active' => request()->routeIs('admin.subcategories.*'),
+        ],
+        [
+            // Productos
+            'name' => 'Productos',
+            'icon' => 'fa-solid fa-box',
+            'route' => route('admin.products.index'),
+            'active' => request()->routeIs('admin.products.*'),
         ],
     ];
 @endphp
@@ -28,7 +56,7 @@
             @foreach ($links as $link)
                 <li>
                     <a href="{{ $link['route'] }}"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 group {{ $link['active'] ? 'bg-gray-300' : '' }}">
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 group {{ $link['active'] ? 'bg-gray-200' : '' }}">
                         <span class="inline-flex w-8 h-8 justify-center items-center">
                             <i class="{{ $link['icon'] }} text-gray-500"></i>
                         </span>
