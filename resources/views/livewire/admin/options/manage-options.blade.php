@@ -44,7 +44,7 @@
                             @endforeach
                         </div>
                         <div>
-                            @livewire('admin.options.add-new-feature', ['option' => $option])
+                            @livewire('admin.options.add-new-feature', ['option' => $option], key('add-new-feature-' . $option->id))
                         </div>
                     </div>
                 @endforeach
@@ -87,7 +87,7 @@
                             </button>
                         </div>
                         <div class="grid grid-cols-2 gap-6">
-                            <div class="">
+                            <div>
                                 <x-label class="mb-1">Valor</x-label>
                                 @switch($newOption->type)
                                     @case(1)
@@ -96,16 +96,18 @@
                                     @break
 
                                     @case(2)
-                                    <div class="border border-gray-300 rounded-md h-[42px] flex items-center justify-between px-2">
-                                        {{ $newOption->features[$index]['value'] ?: 'Seleccione un color' }}
-                                        <input type="color" wire:model.live="newOption.features.{{ $index }}.value">                                        
-                                    </div>
+                                        <div
+                                            class="border border-gray-300 rounded-md h-[42px] flex items-center justify-between px-2">
+                                            {{ $newOption->features[$index]['value'] ?: 'Seleccione un color' }}
+                                            <input type="color"
+                                                wire:model.live="newOption.features.{{ $index }}.value">
+                                        </div>
                                     @break
 
                                     @default
                                 @endswitch
                             </div>
-                            <div class="">
+                            <div>
                                 <x-label class="mb-1">Descripción</x-label>
                                 <x-input wire:model="newOption.features.{{ $index }}.description" class="w-full"
                                     placeholder="Ingrese una descripción" />
