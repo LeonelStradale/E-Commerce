@@ -42,7 +42,7 @@ class OptionSeeder extends Seeder
                 'features' => [
                     [
                         'value' => '#000000',
-                        'description' => 'negro'
+                        'description' => 'black'
                     ],
                     [
                         'value' => '#ffffff',
