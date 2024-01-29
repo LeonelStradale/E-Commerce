@@ -38,6 +38,15 @@
     @stack('modals')
 
     @livewireScripts
+
+    <!-- ChatBot -->
+    <script>
+        var botmanWidget = {
+            aboutText: "ChatBot 🦝",
+            introMessage: "¡Bienvenido! Soy un Chat de ayuda que te servirá para orientarte en la página. Para empezar a recibir ayuda escribe la palabra 'Hola'."
+        };
+    </script>
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </body>
 
 </html>

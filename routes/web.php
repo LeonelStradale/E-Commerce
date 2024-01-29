@@ -26,3 +26,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::match(['get', 'post'], '/botman', 'App\Http\Controllers\BotManController@handle');
