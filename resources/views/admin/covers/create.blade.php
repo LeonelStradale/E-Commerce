@@ -19,11 +19,49 @@
                 <label class="flex items-center px-4 py-2 rounded-lg bg-white cursor-pointer text-gray-700">
                     <i class="fas fa-camera mr-2"></i>
                     Actualizar imagen
-                    <input type="file" class="hidden" accept="image/*" name="image" onchange="previewImage(event, '#imgPreview')">
+                    <input type="file" class="hidden" accept="image/*" name="image"
+                        onchange="previewImage(event, '#imgPreview')">
                 </label>
             </div>
-            <img class="aspect-[3/1] object-cover object-center w-full" src="{{ asset('img/no-image-h.png') }}" id="imgPreview">
+            <img class="aspect-[3/1] object-cover object-center w-full" src="{{ asset('img/no-image-h.png') }}"
+                id="imgPreview">
         </figure>
+        <x-validation-errors class="mb-4" />
+        <div class="mb-4">
+            <x-label class="mb-1">
+                Título
+            </x-label>
+            <x-input name="title" value="{{ old('title') }}" class="w-full"
+                placeholder="Por favor ingrese el título de la portada" />
+        </div>
+        <div class="mb-4">
+            <x-label class="mb-1">
+                Fecha de inicio
+            </x-label>
+            <x-input type="date" name="start_at" value="{{ old('start_at', now()->format('Y-m-d')) }}"
+                class="w-full" />
+        </div>
+        <div class="mb-4">
+            <x-label class="mb-1">
+                Fecha de finalización (Opcional)
+            </x-label>
+            <x-input type="date" name="end_at" value="{{ old('end_at') }}" class="w-full" />
+        </div>
+        <div class="mb-4 flex space-x-2">
+            <label>
+                <x-input type="radio" name="is_active" value="1" checked />
+                Activo
+            </label>
+            <label>
+                <x-input type="radio" name="is_active" value="0" />
+                Inactivo
+            </label>
+        </div>
+        <div class="flex justify-end">
+            <x-button>
+                Crear portada
+            </x-button>
+        </div>
     </form>
 
     @push('js')
@@ -49,4 +87,5 @@
             }
         </script>
     @endpush
+    
 </x-admin-layout>

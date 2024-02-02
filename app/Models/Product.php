@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -38,5 +40,12 @@ class Product extends Model
             ->using(OptionProduct::class)
             ->withPivot('features')
             ->withTimestamps();
+    }
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => Storage::url($this->image_path),
+        );
     }
 }
