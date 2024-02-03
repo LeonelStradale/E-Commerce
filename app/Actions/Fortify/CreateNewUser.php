@@ -5,11 +5,9 @@ namespace App\Actions\Fortify;
 use App\Models\User;
 use App\Rules\Recaptcha;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
-use Closure;
 
 class CreateNewUser implements CreatesNewUsers
 {
