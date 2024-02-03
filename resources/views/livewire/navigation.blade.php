@@ -86,7 +86,7 @@
                     <div class="px-4 py-3 bg-purple-600 text-white font-semibold">
                         <div class="flex justify-between items-center">
                             <span class="text-lg">
-                                Hola
+                                ¡Hola!
                             </span>
                             <button x-on:click="open = false">
                                 <i class="fas fa-times"></i>
@@ -97,7 +97,7 @@
                         <ul>
                             @foreach ($families as $family)
                                 <li wire:mouseover="$set('family_id', {{ $family->id }})">
-                                    <a href=""
+                                    <a href="{{ route('families.show', $family) }}"
                                         class="flex items-center justify-between px-4 py-4 text-gray-700 hover:bg-purple-200">
                                         {{ $family->name }}
                                         <i class="fa-solid fa-angle-right"></i>
@@ -113,7 +113,7 @@
                             <p class="border-b-[3px] border-lime-400 uppercase text-xl font-semibold pb-1">
                                 {{ $this->familyName }}
                             </p>
-                            <a href="" class="btn btn-purple">
+                            <a href="{{ route('families.show', $family_id) }}" class="btn btn-purple">
                                 Ver todo
                             </a>
                         </div>
