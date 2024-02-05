@@ -19,7 +19,8 @@
                     </a>
                 </h1>
                 <div class="flex-1 hidden md:block">
-                    <x-input oninput="search(this.value)" class="w-full" placeholder="Buscar por producto, tienda o marca" />
+                    <x-input oninput="search(this.value)" class="w-full"
+                        placeholder="Buscar por producto, tienda o marca" />
                 </div>
                 <div class="flex items-center space-x-4 md:space-x-8">
                     <button class="text-xl md:text-3xl">
@@ -53,27 +54,39 @@
                                     </p>
                                 </div>
                             @else
-                                <x-dropdown-link href="{{ route('profile.show') }}">
-                                    Mi perfil
-                                </x-dropdown-link>
-                                <div class="border-t border-gray-200">
-                                    <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}" x-data>
-                                        @csrf
-
-                                        <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                            {{ __('Log Out') }}
-                                        </x-dropdown-link>
-                                    </form>
+                                <!-- Account Management -->
+                                <div class="px-4 py-3">
+                                    <span class="block text-sm text-gray-900 truncate dark:text-white">
+                                        {{ Auth::user()->name }}
+                                    </span>
+                                    <span
+                                        class="block text-sm  text-gray-500 truncate dark:text-gray-400">
+                                        {{ Auth::user()->email }}    
+                                    </span>
                                 </div>
-                            @endguest
+                                <div class="border-t border-gray-200">
+                                    <x-dropdown-link href="{{ route('profile.show') }}">
+                                        {{ __('Profile') }}
+                                    </x-dropdown-link>
+                                    <div class="border-t border-gray-200">
+                                        <!-- Authentication -->
+                                        <form method="POST" action="{{ route('logout') }}" x-data>
+                                            @csrf
+
+                                            <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                                {{ __('Log Out') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                    </div>
+                                @endguest
                         </x-slot>
                     </x-dropdown>
                 </div>
             </div>
 
             <div class="mt-4 md:hidden">
-                <x-input oninput="search(this.value)" class="w-full" placeholder="Buscar por producto, tienda o marca" />
+                <x-input oninput="search(this.value)" class="w-full"
+                    placeholder="Buscar por producto, tienda o marca" />
             </div>
         </x-container>
     </header>

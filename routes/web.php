@@ -30,18 +30,18 @@ Route::middleware([
     })->name('dashboard');
 });
 
-/* Facebook Auth */
-Route::get('/facebook-auth/redirect', [AuthSocialiteController::class, 'redirectFacebook'])
-    ->name('facebook-auth.redirect');
-
-Route::get('/facebook-auth/callback', [AuthSocialiteController::class, 'callbackFacebook'])
-    ->name('facebook-auth.callback');
-
 /* Google Auth */
 Route::get('/google-auth/redirect', [AuthSocialiteController::class, 'redirectGoogle'])
     ->name('google-auth.redirect');
 
 Route::get('/google-auth/callback', [AuthSocialiteController::class, 'callbackGoogle'])
     ->name('google-auth.callback');
+
+/* Facebook Auth */
+Route::get('/facebook-auth/redirect', [AuthSocialiteController::class, 'redirectFacebook'])
+    ->name('facebook-auth.redirect');
+
+Route::get('/facebook-auth/callback', [AuthSocialiteController::class, 'callbackFacebook'])
+    ->name('facebook-auth.callback');
 
 Route::match(['get', 'post'], '/botman', 'App\Http\Controllers\BotManController@handle');

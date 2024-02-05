@@ -17,9 +17,7 @@ class AuthSocialiteController extends Controller
     {
         $user_facebook = Socialite::driver('facebook')->stateless()->user();
 
-        dd($user_facebook);
-
-        $user = User::findOrCreate([
+        $user = User::updateOrCreate([
             'facebook_id' => $user_facebook->getId(),
         ], [
             'name' => $user_facebook->getName(),
