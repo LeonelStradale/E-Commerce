@@ -133,7 +133,7 @@
                         <ul class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                             @foreach ($this->categories as $category)
                                 <li>
-                                    <a href="" class="text-purple-600 font-semibold text-lg">
+                                    <a href="{{ route('categories.show', $category) }}" class="text-purple-600 font-semibold text-lg">
                                         {{ $category->name }}
                                     </a>
 
