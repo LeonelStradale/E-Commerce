@@ -119,15 +119,15 @@
                             +
                         </button>
                     </div>
-                    <button class="btn btn-purple w-full mb-6">
-                        Agregar al carrito
-                    </button>
-                    <div class="flex items-center space-x-4 text-gray-700">
+                    <div class="flex items-center space-x-4 text-gray-700 mb-6">
                         <i class="fa-solid fa-truck-fast text-2xl"></i>
                         <p>
                             Envío a domicilio
                         </p>
                     </div>
+                    <button class="btn btn-purple w-full">
+                        Agregar al carrito
+                    </button>
                 </div>
             </div>
         </div>
