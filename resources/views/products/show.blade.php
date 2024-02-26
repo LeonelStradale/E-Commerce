@@ -22,7 +22,7 @@
                                 d="m1 9 4-4-4-4" />
                         </svg>
                         <a href="{{ route('families.show', $product->subcategory->category->family) }}"
-                            class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
+                            class="ms-1 text-sm font-medium text-gray-700 hover:text-purple-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
                             {{ $product->subcategory->category->family->name }}
                         </a>
                     </div>
@@ -35,21 +35,8 @@
                                 d="m1 9 4-4-4-4" />
                         </svg>
                         <a href="{{ route('categories.show', $product->subcategory->category) }}"
-                            class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
+                            class="ms-1 text-sm font-medium text-gray-700 hover:text-purple-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
                             {{ $product->subcategory->category->name }}
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="flex items-center">
-                        <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 9 4-4-4-4" />
-                        </svg>
-                        <a href="{{ route('subcategories.show', $product->subcategory->category) }}"
-                            class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">
-                            {{ $product->subcategory->name }}
                         </a>
                     </div>
                 </li>
@@ -61,7 +48,7 @@
                                 d="m1 9 4-4-4-4" />
                         </svg>
                         <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                            {{ $product->name }}
+                            {{ $product->subcategory->name }}
                         </span>
                     </div>
                 </li>
@@ -69,68 +56,6 @@
         </nav>
     </x-container>
 
-    <x-container>
-        <div class="card">
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="col-span-1">
-                    <figure class="mb-2">
-                        <img src="{{ $product->image }}" class="aspect-[16/9] w-full object-cover object-center"
-                            alt="">
-                    </figure>
-                    <div class="text-sm">
-                        {{ $product->description }}
-                    </div>
-                </div>
-                <div class="col-span-1">
-                    <h1 class="text-xl text-gray-600 mb-2">
-                        {{ $product->name }}
-                    </h1>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <ul class="flex space-x-1 text-sm">
-                            <li>
-                                <i class="fa-solid fa-star text-yellow-400"></i>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-star text-yellow-400"></i>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-star text-yellow-400"></i>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-star text-yellow-400"></i>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-star text-yellow-400"></i>
-                            </li>
-                        </ul>
-                        <p class="text-sm text-gray-700">4.5 (55)</p>
-                    </div>
-                    <p class="font-semibold text-2xl text-gray-600 mb-4">
-                        $ {{ $product->price }}
-                    </p>
-                    <div class="flex items-center space-x-6 mb-6">
-                        <button class="btn btn-gray">
-                            -
-                        </button>
-                        <span>
-                            1
-                        </span>
-                        <button class="btn btn-gray">
-                            +
-                        </button>
-                    </div>
-                    <div class="flex items-center space-x-4 text-gray-700 mb-6">
-                        <i class="fa-solid fa-truck-fast text-2xl"></i>
-                        <p>
-                            Envío a domicilio
-                        </p>
-                    </div>
-                    <button class="btn btn-purple w-full">
-                        Agregar al carrito
-                    </button>
-                </div>
-            </div>
-        </div>
-    </x-container>
+    @livewire('products.add-to-cart', ['product' => $product])
 
 </x-app-layout>

@@ -25,7 +25,7 @@
 
         <div class="bg-white rounded-lg shadow-lg p-6 flex items-center justify-center">
             <h2 class="text-xl font-semibold">
-                SUALTESZZA
+                ALTEZZA
             </h2>
         </div>
     </div>
