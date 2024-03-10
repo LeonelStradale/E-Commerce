@@ -15,15 +15,29 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Storage::deleteDirectory('products');
-        
+
         Storage::makeDirectory('products');
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Edgar Leonel Acevedo Cuevas',
-            'email' => 'leonelstradale711@gmail.com',
-            'password' => bcrypt('Juni1200'),
-        ]);
+        \App\Models\User::factory()->create(
+            [
+                'name' => 'Edgar Leonel',
+                'last_name' => 'Acevedo Cuevas',
+                'email' => 'leonelstradale711@gmail.com',
+                'phone' => '4922951793',
+                'password' => bcrypt('Juni1200'),
+            ]
+        );
+
+        \App\Models\User::factory()->create(
+            [
+                'name' => 'Edgar Leonel',
+                'last_name' => 'Acevedo Cuevas',
+                'email' => 'leonelasetto@gmail.com',
+                'phone' => '4924920523',
+                'password' => bcrypt('Juni1200'),
+            ]
+        );
 
         $this->call([
             FamilySeeder::class,
