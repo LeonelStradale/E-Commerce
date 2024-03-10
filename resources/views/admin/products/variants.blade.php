@@ -16,7 +16,8 @@
     ],
 ]">
 
-    <form action="{{ route('admin.products.variantsUpdate', [$product, $variant]) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.products.variantsUpdate', [$product, $variant]) }}" method="POST"
+        enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <x-validation-errors class="mb-4"></x-validation-errors>
@@ -29,7 +30,7 @@
                         onchange="previewImage(event, '#imgPreview')">
                 </label>
             </div>
-            <img class="aspect-[16/9] w-full object-cover object-center" src="{{ $variant->image }}" id="imgPreview">
+            <img class="aspect-[1/1] w-full object-cover object-center" src="{{ $variant->image }}" id="imgPreview">
         </figure>
 
         <div class="card">
@@ -37,13 +38,15 @@
                 <x-label class="mb-1">
                     Código (SKU)
                 </x-label>
-                <x-input class="w-full" name="sku" value="{{ old('sku', $variant->sku) }}" placeholder="Ingrese el codigo sku" />
+                <x-input class="w-full" name="sku" value="{{ old('sku', $variant->sku) }}"
+                    placeholder="Ingrese el codigo sku" />
             </div>
             <div class="mb-4">
                 <x-label class="mb-1">
                     Stock
                 </x-label>
-                <x-input class="w-full" name="stock" value="{{ old('stock', $variant->stock) }}" placeholder="Ingrese el stock" />
+                <x-input class="w-full" name="stock" value="{{ old('stock', $variant->stock) }}"
+                    placeholder="Ingrese el stock" />
             </div>
             <div class="flex justify-end">
                 <x-button>

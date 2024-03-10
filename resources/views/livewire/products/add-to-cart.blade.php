@@ -2,18 +2,18 @@
     <div class="card">
         <div class="grid md:grid-cols-2 gap-6">
             <div class="col-span-1">
-                <figure class="mb-2">
-                    <img src="{{ $product->image }}" class="aspect-[16/9] w-full object-cover object-center"
-                        alt="">
+                <figure>
+                    <img src="{{ $product->image }}" class="aspect-[1/1] w-full object-cover object-center" alt="">
                 </figure>
-                <div class="text-sm">
-                    {{ $product->description }}
-                </div>
             </div>
             <div class="col-span-1">
                 <h1 class="text-xl text-gray-600 mb-2">
                     {{ $product->name }}
                 </h1>
+
+                <div class="text-sm mb-2">
+                    {{ $product->description }}
+                </div>
                 <div class="flex items-center space-x-2 mb-4">
                     <ul class="flex space-x-1 text-sm">
                         <li>
@@ -54,7 +54,7 @@
                         Envío a domicilio
                     </p>
                 </div>
-                <button class="btn btn-purple w-full">
+                <button class="btn btn-purple w-full" wire:click="add_to_cart" wire:loading.attr="disabled">
                     Agregar al carrito
                 </button>
             </div>

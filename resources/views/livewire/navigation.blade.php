@@ -23,9 +23,13 @@
                         placeholder="Buscar por producto, tienda o marca" />
                 </div>
                 <div class="flex items-center space-x-4 md:space-x-8">
-                    <button class="text-xl md:text-3xl">
-                        <i class="fas fa-shopping-cart text-white"></i>
-                    </button>
+                    <a href="{{ route('cart.index') }}" class="relative">
+                        <i class="fas fa-shopping-cart text-white text-xl md:text-3xl"></i>
+                        <span id="cart-count"
+                            class="absolute -top-2 -end-4 inline-flex items-center justify-center w-6 h-6 bg-red-500 rounded-full text-xs text-white border-2 border-white font-bold">
+                            {{ Cart::instance('shopping')->count() }}
+                        </span>
+                    </a>
                     <x-dropdown>
                         <x-slot name="trigger">
                             @auth
@@ -59,9 +63,8 @@
                                     <span class="block text-sm text-gray-900 truncate dark:text-white">
                                         {{ Auth::user()->name }}
                                     </span>
-                                    <span
-                                        class="block text-sm  text-gray-500 truncate dark:text-gray-400">
-                                        {{ Auth::user()->email }}    
+                                    <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">
+                                        {{ Auth::user()->email }}
                                     </span>
                                 </div>
                                 <div class="border-t border-gray-200">
@@ -133,14 +136,16 @@
                         <ul class="grid grid-cols-1 xl:grid-cols-3 gap-8">
                             @foreach ($this->categories as $category)
                                 <li>
-                                    <a href="{{ route('categories.show', $category) }}" class="text-purple-600 font-semibold text-lg">
+                                    <a href="{{ route('categories.show', $category) }}"
+                                        class="text-purple-600 font-semibold text-lg">
                                         {{ $category->name }}
                                     </a>
 
                                     <ul class="mt-4 space-y-2">
                                         @foreach ($category->subcategories as $subcategory)
                                             <li>
-                                                <a href="{{ route('subcategories.show', $subcategory) }}" class="text-sm text-gray-700 hover:text-purple-600">
+                                                <a href="{{ route('subcategories.show', $subcategory) }}"
+                                                    class="text-sm text-gray-700 hover:text-purple-600">
                                                     {{ $subcategory->name }}
                                                 </a>
                                             </li>
@@ -157,6 +162,10 @@
 
     @push('js')
         <script>
+            Livewire.on('cartUpdated', (count) => {
+                document.getElementById('cart-count').innerText = count;
+            });
+
             function search(value) {
                 Livewire.dispatch('search', {
                     search: value
