@@ -39,6 +39,11 @@ Route::get('shipping', [ShippingController::class, 'index'])->name('shipping.ind
 
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
+Route::post('checkout.paypal', [CheckoutController::class, 'paypal'])->name('checkout.paypal');
+
+Route::get('success', [CheckoutController::class, 'success'])->name('success');
+Route::get('cancel', [CheckoutController::class, 'cancel'])->name('cancel');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

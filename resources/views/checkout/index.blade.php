@@ -88,7 +88,72 @@
                 </div>
                 <div class="col-span-1">
                     <div class="lg:max-w-[40rem] py-12 lg:pl-8 sm:pr-6 lg:pr-8 mr-auto">
-
+                        <ul class="space-y-4 mb-4">
+                            @foreach (Cart::instance('shopping')->content() as $item)
+                                <li class="flex items-center space-x-4">
+                                    <div class="flex-shrink-0 relative">
+                                        <img class="h-16 aspect-square" src="{{ $item->options->image }}"
+                                            alt="">
+                                        <div
+                                            class="flex justify-center items-center h-6 w-6 bg-purple-500 bg-opacity-70 rounded-full absolute -right-2 -top-2 text-xs text-white border-2 border-white font-bold">
+                                            <span class="text-white font-semibold">
+                                                {{ $item->qty }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p>
+                                            {{ $item->name }}
+                                        </p>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <p>
+                                            $ {{ $item->price }}
+                                        </p>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <div class="flex justify-between">
+                            <p>
+                                Subtotal:
+                            </p>
+                            <p>
+                                $ {{ Cart::instance('shopping')->subtotal() }}
+                            </p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p>
+                                IVA (16%):
+                            </p>
+                            <p>
+                                $ {{ Cart::instance('shopping')->tax() }}
+                            </p>
+                        </div>
+                        <div class="flex justify-between">
+                            <p>
+                                Precio de envío:
+                                <i class="fas fas-info-circle" title="El precio de envío es de $50.00 pesos"></i>
+                            </p>
+                            <p>
+                                $ 50.00
+                            </p>
+                        </div>
+                        <hr class="my-3">
+                        <div class="flex justify-between mb-4">
+                            <p class="text-lg font-semibold">
+                                Total:
+                            </p>
+                            <p>
+                                $ {{ (float) preg_replace('/[^0-9.]/', '', Cart::instance('shopping')->total()) + 50 }}
+                            </p>
+                        </div>
+                        <form action="{{ route('checkout.paypal') }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-purple w-full block bg-inherit">
+                                Realizar pedido
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
