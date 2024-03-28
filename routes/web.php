@@ -5,6 +5,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FamilyController;
+use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\SubcategoryController;
@@ -39,10 +41,19 @@ Route::get('shipping', [ShippingController::class, 'index'])->name('shipping.ind
 
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 
-Route::post('checkout.paypal', [CheckoutController::class, 'paypal'])->name('checkout.paypal');
+// PayPal
+Route::post('paypal', [PayPalController::class, 'paypal'])->name('paypal');
 
-Route::get('success', [CheckoutController::class, 'success'])->name('success');
-Route::get('cancel', [CheckoutController::class, 'cancel'])->name('cancel');
+Route::get('success', [PayPalController::class, 'success'])->name('success');
+
+Route::get('cancel', [PayPalController::class, 'cancel'])->name('cancel');
+
+// Stripe
+Route::post('stripe', [StripeController::class, 'stripe'])->name('stripe');
+
+Route::get('success', [StripeController::class, 'success'])->name('success');
+
+Route::get('cancel', [StripeController::class, 'cancel'])->name('cancel');
 
 Route::middleware([
     'auth:sanctum',
